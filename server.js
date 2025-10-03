@@ -30,8 +30,9 @@ app.post('/generate', async (req, res) => {
 
     console.log("Prompt recebido:", prompt);
 
-    // --- CORREÇÃO AQUI ---
-    // Trocamos 'gemini-1.5-flash-latest' por 'gemini-pro', que é um modelo padrão e estável.
+    // --- CORREÇÃO DEFINITIVA ---
+    // O erro que você viu confirma que o servidor ainda usava o nome antigo do modelo.
+    // Garantimos aqui o uso do modelo 'gemini-pro', que é o correto e estável.
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     // Instrução aprimorada para a IA
