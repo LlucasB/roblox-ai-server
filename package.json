@@ -1,0 +1,16 @@
+{
+  "name": "roblox-ai-proxy-render",
+  "version": "1.0.0",
+  "description": "Proxy para plugin do Roblox",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "@google/generative-ai": "^0.12.0"
+  },
+  "engines": {
+    "node": "18"
+  }
+}
