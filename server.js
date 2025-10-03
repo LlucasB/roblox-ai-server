@@ -30,10 +30,11 @@ app.post('/generate', async (req, res) => {
 
     console.log("Prompt recebido:", prompt);
 
-    // --- CORREÇÃO DEFINITIVA ---
-    // O erro que você viu confirma que o servidor ainda usava o nome antigo do modelo.
-    // Garantimos aqui o uso do modelo 'gemini-pro', que é o correto e estável.
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    // --- CORREÇÃO FINAL ---
+    // O erro indica que a versão "v1beta" da API não encontra o "gemini-pro".
+    // Vamos usar o "gemini-1.0-pro", um modelo mais antigo e com maior compatibilidade.
+    // Se este também falhar, o problema está 100% na configuração da chave de API no Google.
+    const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro" });
 
     // Instrução aprimorada para a IA
     const fullPrompt = `
@@ -46,7 +47,7 @@ app.post('/generate', async (req, res) => {
       Pedido do usuário: "${prompt}"
     `;
     
-    console.log("Enviando para a API do Gemini com o modelo 'gemini-pro'...");
+    console.log("Enviando para a API do Gemini com o modelo 'gemini-1.0-pro'...");
     const result = await model.generateContent(fullPrompt);
     const response = await result.response;
     let text = response.text();
