@@ -30,7 +30,9 @@ app.post('/generate', async (req, res) => {
 
     console.log("Prompt recebido:", prompt);
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
+    // --- CORREÇÃO AQUI ---
+    // Trocamos 'gemini-1.5-flash-latest' por 'gemini-pro', que é um modelo padrão e estável.
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     // Instrução aprimorada para a IA
     const fullPrompt = `
@@ -43,7 +45,7 @@ app.post('/generate', async (req, res) => {
       Pedido do usuário: "${prompt}"
     `;
     
-    console.log("Enviando para a API do Gemini...");
+    console.log("Enviando para a API do Gemini com o modelo 'gemini-pro'...");
     const result = await model.generateContent(fullPrompt);
     const response = await result.response;
     let text = response.text();
